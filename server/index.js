@@ -6,6 +6,7 @@ import authRouter from "./routes/auth.route.js";
 import studentRouter from "./routes/student.route.js";
 import adminRouter from "./routes/admin.route.js";
 import courseRouter from "./routes/course.route.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use(express.json());
 
 app.use(cookieParser());
 
+app.use(cors());
 app.listen(8080, () => {
   console.log("Server running at http://localhost:8080/");
 });

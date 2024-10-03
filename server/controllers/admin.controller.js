@@ -1,5 +1,6 @@
 import Student from "../models/student.model.js";
 import Course from "../models/course.model.js";
+import bcryptjs from "bcryptjs";
 import { errorHandler } from "../utils/error.js";
 
 /**
@@ -10,7 +11,12 @@ import { errorHandler } from "../utils/error.js";
  */
 export const addStudent = async (req, res, next) => {
   try {
-    const newStudent = new Student(req.body);
+    const { password, ...studentData } = req.body;
+    const hashedPassword = bcryptjs.hashSync(password, 10);
+    const newStudent = new Student({
+      ...studentData,
+      password: hashedPassword,
+    });
     await newStudent.save();
     res.status(201).json({ message: "Student added successfully!" });
   } catch (error) {

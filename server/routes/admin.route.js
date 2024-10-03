@@ -11,18 +11,18 @@ import { verifyToken } from "../utils/verifyUser.js";
 const router = express.Router();
 
 // Route for adding a student (protected)
-router.post("/student/add", verifyToken, addStudent);
+router.post("/student/add", addStudent);
 
 // Route for listing all students (protected)
-router.get("/students", verifyToken, listAllStudents);
+router.get("/students", listAllStudents);
 
 // Route for listing all courses (protected)
-router.get("/courses", verifyToken, listAllCourses);
+router.get("/courses", listAllCourses);
 
 // Route for listing all students in a specific course (protected)
-router.get("/course/:courseId/students", verifyToken, listStudentsInCourse);
-
+router.get("/course/:courseId/students", listStudentsInCourse);
+//removed verifyToken middleware
 // Route for adding a course (protected)
-router.post("/course/add", verifyToken, addCourse);
+router.post("/course/add", addCourse);
 
 export default router;

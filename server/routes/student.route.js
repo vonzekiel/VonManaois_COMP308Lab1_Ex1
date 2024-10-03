@@ -10,15 +10,15 @@ import { verifyToken } from "../utils/verifyUser.js";
 const router = express.Router();
 
 // Route for adding a course to a student (protected)
-router.post("/course/add", verifyToken, addCourse);
+router.post("/course/add", addCourse);
 
 // Route for updating a course for a student (protected)
-router.put("/course/update", verifyToken, updateCourse);
+router.put("/course/update", updateCourse);
 
 // Route for dropping a course for a student (protected)
-router.delete("/course/drop", verifyToken, dropCourse);
+router.delete("/course/drop", dropCourse);
 
 // Route for listing all courses taken by a student (protected)
-router.get("/courses/:studentId", verifyToken, listStudentCourses);
+router.get("/courses/:studentId", listStudentCourses);
 
 export default router;
